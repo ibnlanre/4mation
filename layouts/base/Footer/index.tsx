@@ -2,10 +2,19 @@ import { Icon } from "@iconify/react";
 
 import disciplines from "../disciplines.json";
 import Link from "next/link";
+import { useContext, useEffect, useRef } from "react";
+import { Context } from "@/context";
 
 export function Footer() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { setFooterHeight } = useContext(Context);
+
+  useEffect(() => {
+    if (ref.current) setFooterHeight(ref.current.scrollHeight);
+  }, [setFooterHeight]);
+
   return (
-    <div className="py-12 text-white bg-raisin-black">
+    <div ref={ref} className="py-12 text-white bg-raisin-black">
       <footer className="grid grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-10 justify-items-start container">
         <address className="grid flex-1 gap-4 not-italic">
           <p>

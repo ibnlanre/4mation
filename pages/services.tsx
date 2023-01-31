@@ -8,6 +8,9 @@ import {
 import { useRouter } from "next/router";
 import { Icon } from "@iconify/react";
 
+import { Context } from "@/context";
+import { useContext, useMemo } from "react";
+
 import Head from "next/head";
 import Link from "next/link";
 
@@ -40,16 +43,27 @@ const services = [
 ];
 
 export default function Services() {
+  const { headerHeight, footerHeight } = useContext(Context);
   const { query } = useRouter();
+
   const route = query as Record<string, any>;
   const path = Object.keys(route)?.at(0) ?? "project-management";
+  const height = useMemo(
+    () => headerHeight + footerHeight,
+    [footerHeight, headerHeight]
+  );
 
   return (
-    <div className="container grid items-center gap-14">
+    <main
+      className="container grid gap-14"
+      style={{
+        minHeight: `calc(100vh - ${height}px)`,
+      }}
+    >
       <Head>
         <title>Services - 4mation</title>
       </Head>
-      <div className="flex flex-col items-center md:flex-row">
+      <div className="flex flex-col items-start md:flex-row">
         <ul className="grid self-start w-full mt-16 divide-y-2 md:w-max divide-dashed">
           {services.map((service, idx) => {
             return (
@@ -75,6 +89,6 @@ export default function Services() {
           })}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

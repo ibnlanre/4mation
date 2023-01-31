@@ -88,7 +88,7 @@ export function ContactUs() {
           </figure>
 
           <div className="grid gap-2">
-            <label htmlFor="captcha-input">Enter Captcha Here :</label>
+            <label htmlFor="captcha-input">Enter Captcha Here:</label>
             <input
               type="text"
               id="captcha-input"

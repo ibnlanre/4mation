@@ -1,12 +1,14 @@
 import { type AppProps } from "next/app";
 import { Poppins } from "@next/font/google";
 import { Footer, Header, Navigation } from "@/layouts/base";
+import { Context } from "@/context";
+import { FavIcon } from "@/components/FavIcon";
+import { useEffect, useRef, useState } from "react";
 
 import Head from "next/head";
 
 import "tailwindcss/tailwind.css";
 import "../styles/index.css";
-import { FavIcon } from "@/components/FavIcon";
 
 const poppins = Poppins({
   style: ["normal", "italic"],
@@ -30,8 +32,18 @@ function BaseStyles() {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const [footerHeight, setFooterHeight] = useState(0);
+
+  useEffect(() => {
+    if (ref.current) setHeaderHeight(ref.current.scrollHeight);
+  }, [setHeaderHeight]);
+
   return (
-    <>
+    <Context.Provider
+      value={{ footerHeight, setFooterHeight, headerHeight, setHeaderHeight }}
+    >
       <Head>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -42,12 +54,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <FavIcon />
       </Head>
       <BaseStyles />
-      <div className="sticky top-0 z-50">
+      <div ref={ref} className="sticky top-0 z-50">
         <Header />
         <Navigation />
       </div>
       <Component {...pageProps} />
       <Footer />
-    </>
+    </Context.Provider>
   );
 }
