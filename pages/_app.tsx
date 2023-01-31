@@ -6,6 +6,7 @@ import Head from "next/head";
 
 import "tailwindcss/tailwind.css";
 import "../styles/index.css";
+import { FavIcon } from "@/components/FavIcon";
 
 const poppins = Poppins({
   style: ["normal", "italic"],
@@ -38,6 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=yes"
         />
+        <FavIcon />
       </Head>
       <BaseStyles />
       <div className="sticky top-0 z-50">
