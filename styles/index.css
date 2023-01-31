@@ -1,0 +1,15 @@
+.nav-underline {
+  @apply [background-size:_0%_100%] hover:[background-size:_100%_100%] duration-300 pb-1 bg-no-repeat bg-gradient-to-b hover:[--tw-gradient-stops:_transparent_92%,_crimson_0px] [--tw-gradient-stops:_transparent_92%,_#034A8A_0px];
+}
+
+.container {
+  @apply mx-auto px-24 clump:px-[clamp(10px,7vw,6rem)] max-w-7xl;
+}
+
+.heading {
+  @apply text-5xl font-semibold clump:text-[clamp(2rem,5vw,3rem)];
+}
+
+.showcase {
+  @apply grid gap-12 items-center px-32 clump:px-[clamp(2rem,8vw,8rem)] py-40 clump:py-[clamp(3.5rem,10vw,10rem)];
+}

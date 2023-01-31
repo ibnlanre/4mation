@@ -1,0 +1,57 @@
+{
+  "name": "4mation",
+  "version": "1.0.0",
+  "description": "drilling services website",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "next dev",
+    "lint": "next lint",
+    "build": "next build",
+    "serve": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibnlanre/4mation.git"
+  },
+  "keywords": [
+    "drilling"
+  ],
+  "author": "Ridwan Olanrewaju <olaitanlanre28@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ibnlanre/4mation/issues"
+  },
+  "homepage": "https://github.com/ibnlanre/4mation#readme",
+  "dependencies": {
+    "@emotion/css": "^11.10.5",
+    "@emotion/react": "^11.10.5",
+    "@haileybot/captcha-generator": "^1.7.0",
+    "@mantine/core": "^5.10.2",
+    "@mantine/hooks": "^5.10.2",
+    "@next/font": "^13.1.5",
+    "clsx": "^1.2.1",
+    "framer-motion": "^8.5.4",
+    "next": "^13.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sharp": "^0.31.3",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.4",
+    "yup": "^0.32.11",
+    "zod": "^3.20.2"
+  },
+  "devDependencies": {
+    "@iconify/react": "^4.0.1",
+    "@types/jest": "^29.2.6",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.33.0",
+    "eslint-config-next": "^13.1.6",
+    "eslint-config-prettier": "^8.6.0",
+    "jest": "^29.4.0",
+    "postcss": "^8.4.21",
+    "ts-jest": "^29.0.5"
+  }
+}

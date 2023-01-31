@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Technical",
+    "link": "/courses/technical"
+  },
+  {
+    "title": "Soft Skills",
+    "link": "/courses/soft-skills"
+  },
+  {
+    "title": "Project Management",
+    "link": "/courses/project-management"
+  },
+  {
+    "title": "HSE",
+    "link": "/courses/hse"
+  },
+  {
+    "title": "Business Management",
+    "link": "/courses/business-management"
+  }
+]
