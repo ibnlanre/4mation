@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 import Link from "next/link";
 import disciplines from "../disciplines.json";
@@ -12,13 +13,34 @@ import { Menu } from "./Menu";
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const DISCIPLINES = useMemo(() => {
+    return disciplines.flatMap(({ title, link }, idx) => [
+      <li key={idx}>
+        <Link className="hover:opacity-60" href={link}>
+          {title}
+        </Link>
+      </li>,
+      disciplines.length !== ++idx ? (
+        <hr key={`${idx}-hr`} className="border-t-black" />
+      ) : (
+        []
+      ),
+    ]);
+  }, [disciplines]);
+
+  const { route, events } = useRouter();
+  useEffect(() => {
+    events.on("routeChangeStart", closeMenu);
+  }, [route]);
 
   return (
     <>
       <menu className="bg-white">
         <header className="container flex items-center justify-between h-16">
           <Logo />
-          <Menu />
+          <Menu handleClose={closeMenu} />
           {isMenuOpen ? (
             <Mobile handleClose={handleMenu} />
           ) : (
@@ -71,18 +93,7 @@ export function Navigation() {
 
               <section className="container grid content-start bg-white bg-opacity-90 h-2/3">
                 <ul className="grid items-center h-full gap-4 text-xl py-9">
-                  {disciplines.flatMap(({ title, link }, idx) => [
-                    <li key={idx}>
-                      <Link className="hover:opacity-60" href={link}>
-                        {title}
-                      </Link>
-                    </li>,
-                    disciplines.length !== ++idx ? (
-                      <hr className="border-t-black" />
-                    ) : (
-                      []
-                    ),
-                  ])}
+                  {DISCIPLINES}
                 </ul>
               </section>
             </div>

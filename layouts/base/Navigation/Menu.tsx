@@ -1,13 +1,27 @@
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 import navigation from "./navigation.json";
 import Link from "next/link";
 import clsx from "clsx";
 
-export function Menu() {
+interface IMenu {
+  handleClose: Function;
+}
+
+export function Menu({ handleClose }: IMenu) {
   const route = usePathname();
+  const menuRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.getComputedStyle(menuRef.current).display === "flex")
+        handleClose();
+    });
+  }, []);
+
   return (
-    <ul className="hidden font-medium md:flex gap-7">
+    <ul ref={menuRef} className="hidden font-medium md:flex gap-7">
       {navigation.map(({ title, path }, idx) => (
         <Link key={idx} href={path}>
           <li
