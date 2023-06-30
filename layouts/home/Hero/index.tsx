@@ -9,7 +9,7 @@ export function Hero() {
         width={OilRig.width}
         height={OilRig.height}
         blurDataURL={OilRig.blurDataURL}
-        className="fixed top-0 object-cover h-full py-16 -z-10"
+        className="fixed top-0 object-cover h-full pt-16 -z-10"
         alt="Patrick Hendry - unsplash"
         placeholder="blur"
       />
