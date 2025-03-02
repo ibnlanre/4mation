@@ -1,49 +1,43 @@
 import { type AppProps } from "next/app";
-import { Poppins } from "@next/font/google";
-import { Footer, Header, Navigation } from "@/layouts/base";
-import { Context } from "@/context";
-import { FavIcon } from "@/components/FavIcon";
 import { useEffect, useRef, useState } from "react";
+
+import { Footer, Header, Navigation } from "@/layouts/base";
+import { allCourses, Context } from "@/context";
+import { FavIcon } from "@/components/FavIcon";
+import { BaseStyles } from "@/components/BaseStyles";
+import { COURSE_COUNT_PER_CLICK } from "@/layouts/courses";
 
 import Head from "next/head";
 
 import "tailwindcss/tailwind.css";
 import "../styles/index.css";
 
-const poppins = Poppins({
-  style: ["normal", "italic"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--poppins-font",
-  subsets: ["latin"],
-});
-
-function BaseStyles() {
-  return (
-    <style jsx global>
-      {`
-        :root {
-          --poppins-font: ${poppins.style.fontFamily};
-          font-family: var(--poppins-font);
-          color: #252525;
-        }
-      `}
-    </style>
-  );
-}
-
 export default function App({ Component, pageProps }: AppProps) {
   const ref = useRef<HTMLDivElement>(null);
+
   const [headerHeight, setHeaderHeight] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
+  const [visibleCourses, setVisibleCourses] = useState(() => {
+    return allCourses.slice(0, COURSE_COUNT_PER_CLICK);
+  });
 
   useEffect(() => {
-    if (ref.current) setHeaderHeight(ref.current.scrollHeight);
+    if (ref.current) {
+      setHeaderHeight(ref.current.scrollHeight);
+    }
   }, [setHeaderHeight]);
 
+  const value = {
+    footerHeight,
+    setFooterHeight,
+    headerHeight,
+    setHeaderHeight,
+    visibleCourses,
+    setVisibleCourses,
+  };
+
   return (
-    <Context.Provider
-      value={{ footerHeight, setFooterHeight, headerHeight, setHeaderHeight }}
-    >
+    <Context.Provider value={value}>
       <Head>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

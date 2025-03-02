@@ -34,16 +34,16 @@ export function Header() {
         <div className="flex items-center gap-4">
           <p>Follow us:</p>
           <ul className="flex gap-3 text-lg">
-            <li className="duration-200 hover:text-white">
+            <li className="duration-200 cursor-pointer hover:text-white">
               <Icon icon="entypo-social:facebook-with-circle" />
             </li>
-            <li className="duration-200 hover:text-white">
+            <li className="duration-200 cursor-pointer hover:text-white">
               <Icon icon="entypo-social:twitter-with-circle" />
             </li>
-            <li className="duration-200 hover:text-white">
+            <li className="duration-200 cursor-pointer hover:text-white">
               <Icon icon="entypo-social:linkedin-with-circle" />
             </li>
-            <li className="duration-200 hover:text-white">
+            <li className="duration-200 cursor-pointer hover:text-white">
               <Icon icon="entypo-social:instagram-with-circle" />
             </li>
           </ul>

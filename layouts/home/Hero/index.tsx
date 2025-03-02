@@ -6,12 +6,11 @@ export function Hero() {
     <figure className="max-h-[560px] w-full aspect-[7/3] relative min-h-[400px]">
       <Image
         src={OilRig.src}
-        width={OilRig.width}
-        height={OilRig.height}
         blurDataURL={OilRig.blurDataURL}
-        className="fixed top-0 object-cover h-full pt-16 -z-10"
+        className="!fixed top-0 object-cover h-full py-16 -z-10"
         alt="Patrick Hendry - unsplash"
         placeholder="blur"
+        fill
       />
     </figure>
   );
